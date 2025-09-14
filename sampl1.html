@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUSIYFYY</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      width: 300px;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background-color: #374151;
+      color: white;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .search-box input:focus {
+      border: 2px solid #10b981;
+    }
+
+    /* Song grid */
+    .song-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      width: 100%;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .song-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+    }
+
+    .song-card img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .song-card img:hover {
+      transform: scale(1.05);
+    }
+
+    .song-name {
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    /* Profile logo (top-right) */
+    .profile-logo {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .profile-logo a img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid #10b981;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px #10b981;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 5px #10b981; }
+      to { box-shadow: 0 0 15px #10b981; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Profile logo -->
+  <div class="profile-logo">
+    <a href="login.html">
+      <img src="login.png" alt="Profile Logo">
+    </a>
+  </div>
+
+  <h1>Starving? Play a track</h1>
+
+  <!-- Search box -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search songs..." onkeyup="filterSongs()">
+  </div>
+
+  <div class="song-grid" id="songGrid">
+    <div class="song-card" data-name="Bang Bang Bang">
+      <a href="Bang-Bang-Bang.mp3"><img src="Anjaan.jpg" alt="Bang Bang Bang"></a>
+      <div class="song-name">Bang Bang Bang</div>
+    </div>
+    <div class="song-card" data-name="Kadhal Cricket">
+      <a href="Kadhal-Cricket.mp3"><img src="kadhal.jpg" alt="Kadhal Cricket"></a>
+      <div class="song-name">Kadhal Cricket</div>
+    </div>
+    <div class="song-card" data-name="Kandu Pudichen">
+      <a href="Kandu Pudichen [TamilDaDa.Info].mp3"><img src="kand.jpg" alt="Kandu Pudichen"></a>
+      <div class="song-name">Kandu Pudichen</div>
+    </div>
+    <div class="song-card" data-name="VIP Title Song">
+      <a href="VIP-Title-Song.mp3"><img src="imgv.jpg" alt="VIP Title Song"></a>
+      <div class="song-name">VIP Title Song</div>
+    </div>
+    <div class="song-card" data-name="What a Karavaad">
+      <a href="What-a-Karavaad.mp3"><img src="vip.jpg" alt="What a Karavaad"></a>
+      <div class="song-name">What a Karavaad</div>
+    </div>
+    <div class="song-card" data-name="Yaarum Illa">
+      <a href="Yaarum-illa-MassTamilan.dev.mp3"><img src="naney.jpg" alt="Yaarum illa"></a>
+      <div class="song-name">Yaarum Illa</div>
+    </div>
+      <div class="song-card" data-name="Jalsa-Pannungada">
+      <a href="Jalsa-Pannungada.mp3"><img src="chenai.jpg" alt="Jalsa-Pannungada"></a>
+      <div class="song-name">Jalsa-Pannungada</div>
+    </div>
+      <div class="song-card" data-name="Kaasumela">
+      <a href="Kaasumela-MassTamilan.com.mp3"><img src="kasu.jpg" alt="Kaasumela"></a>
+      <div class="song-name">Kaasumela</div>
+    </div>
+      <div class="song-card" data-name="kanave Nee Naan">
+      <a href="Kanave Nee Naan - Masstamilan.In.mp3"><img src="kanaey.jpg" alt="Kanave Nee Naan"></a>
+      <div class="song-name">Kanave Nee Naan</div>
+    </div>
+      <div class="song-card" data-name="Kanja-Poovu-Kannala">
+      <a href="Kanja-Poovu-Kannala-MassTamilan.dev.mp3"><img src="viruman.jpg" alt="Kanja-Poovu-Kannala"></a>
+      <div class="song-name">Kanja-Poovu-Kannala</div>
+    </div>
+      <div class="song-card" data-name="Kaadhal-Vanthirichu">
+      <a href="Kaadhal-Vanthirichu-MassTamilan.com.mp3"><img src="kadhalvan.jpg" alt="Kaadhal-Vanthirichu"></a>
+      <div class="song-name">Kaadhal-Vanthirichu</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Song Player Full Page -->
+  <div id="playerPage" style="display:none; flex-direction: column; align-items:center; justify-content:center; min-height:100vh; background:rgba(0,0,0,0.95); position:fixed; top:0; left:0; width:100%; z-index:2000;">
+    <button onclick="closePlayer()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:30px; cursor:pointer;">✖</button>
+    
+    <img id="playerImage" src="" style="width:250px; border-radius:15px; margin-bottom:20px;">
+    
+    <h2 id="playerTitle" style="color:white; margin-bottom:15px; text-align:center;"></h2>
+    
+    <audio id="playerAudio" controls style="width:300px; margin-bottom:20px;"></audio>
+    
+    <button onclick="toggleSave()" id="saveBtn" style="background:none; border:none; font-size:30px; cursor:pointer; color:white;">🤍</button>
+
+    <marquee id="runningText" style="color:#10b981; font-size:18px; margin-top:10px; width:80%;"></marquee>
+  </div>
+
+  <script>
+    function filterSongs() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const songs = document.querySelectorAll('.song-card');
+
+      songs.forEach(song => {
+        const songName = song.getAttribute('data-name').toLowerCase();
+        if (songName.includes(input)) {
+          song.style.display = "flex";
+        } else {
+          song.style.display = "none";
+        }
+      });
+    }
+
+    const songs = document.querySelectorAll('.song-card');
+    const playerPage = document.getElementById('playerPage');
+    const playerImage = document.getElementById('playerImage');
+    const playerTitle = document.getElementById('playerTitle');
+    const playerAudio = document.getElementById('playerAudio');
+    const runningText = document.getElementById('runningText');
+    const saveBtn = document.getElementById('saveBtn');
+    let savedSongs = [];
+
+    songs.forEach(song => {
+      song.addEventListener('click', e => {
+        e.preventDefault();
+        const img = song.querySelector('img').src;
+        const title = song.getAttribute('data-name');
+        const audioSrc = song.querySelector('a').getAttribute('href');
+        
+        playerImage.src = img;
+        playerTitle.textContent = title;
+        playerAudio.src = audioSrc;
+        runningText.textContent = `🎶 Now Playing: ${title}`;
+        
+        playerPage.style.display = "flex";
+      });
+    });
+
+    function closePlayer() {
+      playerPage.style.display = "none";
+      playerAudio.pause();
+    }
+
+    function toggleSave() {
+      const currentSong = playerTitle.textContent;
+      if (savedSongs.includes(currentSong)) {
+        savedSongs = savedSongs.filter(s => s !== currentSong);
+        saveBtn.textContent = "🤍";
+      } else {
+        savedSongs.push(currentSong);
+        saveBtn.textContent = "❤️";
+      }
+      console.log("Saved Songs:", savedSongs);
+    }
+  </script>
+
+</body>
+</html>
